@@ -5,8 +5,13 @@ const dotenv = require('dotenv');
 import { Request, Response, NextFunction } from 'express';
 import { GlobalExceptionHandler } from './middleware/global-exception-handler';
 import apiRouter from './routers';
+import ConnectDatabase from './configs/db.config';
 
 dotenv.config();
+const mongooseConnect = new ConnectDatabase(`${process.env.MONGO_HOST}${process.env.MONGO_PORT}/${process.env.MONGO_DB}`);
+mongooseConnect.connect(() => {
+  console.log('------------------ MongoDb Connected! ------------------');
+})
 
 const app = express();
 const port = process.env.PORT || 3001;

@@ -23,6 +23,10 @@
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "helmet": "^6.0.1",
-    "rotating-file-stream": "^3.0.4"
+    "jsonwebtoken": "^9.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.8.1",
+    "rotating-file-stream": "^3.0.4",
+    "uuid": "^9.0.0"
   }
 }

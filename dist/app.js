@@ -9,7 +9,12 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const global_exception_handler_1 = require("./middleware/global-exception-handler");
 const routers_1 = __importDefault(require("./routers"));
+const db_config_1 = __importDefault(require("./configs/db.config"));
 dotenv.config();
+const mongooseConnect = new db_config_1.default(`${process.env.MONGO_HOST}${process.env.MONGO_PORT}/${process.env.MONGO_DB}`);
+mongooseConnect.connect(() => {
+    console.log('------------------ MongoDb Connected! ------------------');
+});
 const app = express();
 const port = process.env.PORT || 3001;
 app.use((req, res, next) => {
