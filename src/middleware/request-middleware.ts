@@ -26,10 +26,10 @@ class RequestMiddleware {
         if (options?.validation?.body) {
             const { error } = options?.validation?.body.validate(req.body);
             if (error != null) {
-                res.status(HttpStatus.BAD_REQUEST).json({
-                    message: '',
-                });
-                // return next(new BadRequest(this.getMessageFromJoiError(error)));
+                // res.status(HttpStatus.BAD_REQUEST).json({
+                //     message: '',
+                // });
+                return next(new BadRequest(this.getMessageFromJoiError(error)));
             }
         }
         return handler(req, res, next);

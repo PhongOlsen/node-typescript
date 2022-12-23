@@ -16,12 +16,15 @@ const authSchema = new Schema({
     userName: {
         type: String,
         required: [true, 'UserName is required'],
-        maxLength: 200
+        maxLength: 200,
+        minLenght: 10,
+        unique: true,
     },
     fullName: {
         type: String,
         required: [true, 'FullName is required'],
-        maxLength: 200
+        maxLength: 200,
+        minLenght: 10,
     },
     password: {
         type: String,
@@ -32,8 +35,13 @@ const authSchema = new Schema({
 
 const Auth: Model<AuthDocument> = model<AuthDocument, Model<AuthDocument>>('auth', authSchema);
 
-export default Auth;
-
 export const CreateAccount = async (auth: AuthDocument): Promise<AuthDocument> => Auth.create(auth).catch((error) => {
+    console.log(`--------${error}---------`);
     throw new ApplicationError(error)
 });
+
+export const Login = async (userName: string): Promise<any> => Auth.findOne({ userName: userName }).catch((error) => {
+    throw new ApplicationError(error);
+});
+
+export default Auth;
