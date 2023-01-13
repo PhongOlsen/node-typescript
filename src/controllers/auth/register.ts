@@ -20,7 +20,6 @@ export const register: RequestHandler = async (req: Request, res: Response, next
             message: 'Success',
             data: account
         });
-        next();
     } catch (error) {
         next(error);
     }

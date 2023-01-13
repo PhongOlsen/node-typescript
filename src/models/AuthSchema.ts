@@ -1,9 +1,7 @@
-import mongoose, { Document, model, Model } from "mongoose";
+import { Document, model, Model, Schema } from "mongoose";
 import ApplicationError from "../utils/errors/application-error";
 import BaseSchema from "./BaseChema";
 import { AuditDocument } from "./BaseChema";
-
-const { Schema } = mongoose;
 
 export class AuthDocument extends Document {
     userName: string;
@@ -36,7 +34,6 @@ const authSchema = new Schema({
 const Auth: Model<AuthDocument> = model<AuthDocument, Model<AuthDocument>>('auth', authSchema);
 
 export const CreateAccount = async (auth: AuthDocument): Promise<AuthDocument> => Auth.create(auth).catch((error) => {
-    console.log(`--------${error}---------`);
     throw new ApplicationError(error)
 });
 

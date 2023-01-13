@@ -15,7 +15,6 @@ class ConnectDatabase {
     private isConnectedBefore: boolean = false;
 
     private readonly mongoConnectionOptions: ConnectOptions = {
-
     };
 
     constructor(mongoUrl: string) {

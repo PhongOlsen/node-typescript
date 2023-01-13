@@ -1,8 +1,11 @@
 import Joi from '@hapi/joi';
 import { register } from './register';
 import { login } from './login';
+import { logout } from './logout';
+import { handleRefreshToken } from './handleRefreshToken';
+
 export {
-    register, login
+    register, login, handleRefreshToken, logout
 };
 
 export const middlewareRegisterUserValidate = Joi.object().keys({
