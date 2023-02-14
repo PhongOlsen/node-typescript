@@ -32,11 +32,11 @@ class ConnectDatabase {
     /** Start mongo connection */
     public connect(onConnectedCallback: IOnConnectedCallback) {
         this.onConnectedCallback = onConnectedCallback;
-        this.startConnection();
+        this.startConnection().then();
     }
 
-    public startConnection = () => {
-        mongoose.connect(this.mongoDbUrl, this.mongoConnectionOptions);
+    public startConnection = async () => {
+        await mongoose.connect(this.mongoDbUrl, this.mongoConnectionOptions);
     }
 
     /**
