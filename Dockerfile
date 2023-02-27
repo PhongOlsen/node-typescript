@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json*", "nodemon.json", "./"]
+COPY ["package.json", "package-lock.json*", "./"]
 
 EXPOSE 3001
 

@@ -30,6 +30,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^6.8.1",
     "openai": "^3.1.0",
+    "os": "^0.1.2",
     "rotating-file-stream": "^3.0.4",
     "uuid": "^9.0.0"
   }
