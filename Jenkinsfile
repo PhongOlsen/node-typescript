@@ -22,6 +22,11 @@ pipeline {
                 echo 'Hello Run Test'
             }
         }
+        stage('Install library for project') {
+            steps {
+                sh 'npm install'
+            }
+        }
         stage('Docker build and push image to ecr') {
             steps {
                 withCredentials([[
