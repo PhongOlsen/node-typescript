@@ -1,0 +1,21 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18.14-alpine
+
+    steps:
+      - name: Check node version
+        run: |
+          npm --version
+          echo "NODE_VERSION=$(npm --version)"
+
+      - name: Check node version
+        if: ${{ env.NODE_VERSION == '9.5.0' }}
+        run: echo "Phiên bản node phù hợp"
